@@ -28,15 +28,47 @@ From the above characteristic table, we can directly write the next state equati
 
 **Procedure**
 
-/* write all the steps invloved */
+1.Define Inputs/Outputs: Inputs: T (toggle), clk (clock); Outputs: Q, Qbar (~Q).
+
+2.Initialize: Set Q = 0 and Qbar = 1 at the start of simulation. 
+
+3.Toggle Logic: On posedge clk, update Q
+
+4.Complementary Output: Set Qbar = ~Q to maintain complementarity.
+
+5.Testbench: Simulate with various T and clk values to verify toggle functionality.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program for flipflops and verify its truth table in quartus using Verilog programming.
+
+Developed by:AKASH CT
+
+RegisterNumber:24901150
 */
+```
+module exp9(T,clk,Q,Qbar);
+input T,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin 
+Q=(T&(~Q))|((~T)&Q);
+Qbar=~Q;
+end
+endmodule
+```
 
 **RTL LOGIC FOR FLIPFLOPS**
+![image](https://github.com/user-attachments/assets/6c340793-4788-465a-8a15-4a4e798bb453)
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![image](https://github.com/user-attachments/assets/8467f753-5a5f-44f2-b8ea-bf1b08991a64)
+
 
 **RESULTS**
+
+Thus the T flipflop is implemented and verified successfully.
